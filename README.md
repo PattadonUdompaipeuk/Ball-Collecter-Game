@@ -12,7 +12,7 @@ Ball Collecter Game is allow player to select 3 levels (Easy / Medium / Hard) to
 4.Run the file ball_collect_game.py and enjoy the game :3
 
 # Usage
--
+https://youtu.be/FHIsF_TYRuk
 
 # Project design and implementation
 - link UML Diagram for my project
