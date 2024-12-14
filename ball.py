@@ -71,22 +71,6 @@ class Ball:
         self.x += self.vx * dt
         self.y += self.vy * dt
 
-    def time_to_hit_vertical_wall(self):
-        if self.vx > 0:
-            return (self.canvas_width - self.x - self.size) / self.vx
-        elif self.vx < 0:
-            return (self.canvas_width + self.x - self.size) / (-self.vx)
-        else:
-            return math.inf
-
-    def time_to_hit_horizontal_wall(self):
-        if self.vy > 0:
-            return (self.canvas_height - self.y - self.size) / self.vy
-        elif self.vy < 0:
-            return (self.canvas_height + self.y - self.size) / (-self.vy)
-        else:
-            return math.inf
-
     def bounce_off_wall(self):
         if self.x + self.size >= self.canvas_width or self.x - self.size <= -self.canvas_width:
             self.vx = -self.vx
