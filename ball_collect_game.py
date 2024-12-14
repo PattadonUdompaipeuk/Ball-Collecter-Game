@@ -6,7 +6,7 @@ import time
 import emoji
 
 
-class BallCollecterGame:
+class BallCollectorGame:
     def __init__(self):
         self.time_limit = 0
         self.start_time = time.time()
@@ -34,7 +34,7 @@ class BallCollecterGame:
         self.left_key_pressed = False
         self.right_key_pressed = False
 
-    def __draw_border(self):
+    def draw_border(self):
         turtle.penup()
         turtle.goto(-self.canvas_width, -self.canvas_height)
         turtle.pensize(10)
@@ -46,10 +46,10 @@ class BallCollecterGame:
             turtle.forward(2 * self.canvas_height)
             turtle.left(90)
 
-    def __redraw(self):
+    def redraw(self):
         turtle.clear()
         self.my_paddle.clear()
-        self.__draw_border()
+        self.draw_border()
         self.my_paddle.draw()
         for i in range(len(self.ball_list)):
             self.ball_list[i].draw()
@@ -87,7 +87,7 @@ class BallCollecterGame:
     def spawn_balls(self):
         ball_radius = 0.05 * self.canvas_width
         x = random.uniform(-self.canvas_width + ball_radius, self.canvas_width - ball_radius)
-        y = self.canvas_height - 2*ball_radius
+        y = self.canvas_height - ball_radius
         vx = (random.randint(-self.ball_speed, self.ball_speed)
               * random.uniform(-self.ball_speed_multiplier, self.ball_speed_multiplier))
         vy = -self.ball_speed * 0.5
@@ -126,7 +126,7 @@ class BallCollecterGame:
     def show_end_game(self, msg):
         self.my_paddle.clear()
         turtle.clear()
-        self.__draw_border()
+        self.draw_border()
         turtle.penup()
         turtle.goto(0, 50)
         turtle.color("white")
@@ -156,7 +156,7 @@ class BallCollecterGame:
 
     def show_select_difficulty(self):
         turtle.clear()
-        self.__draw_border()
+        self.draw_border()
         turtle.bgcolor("black")
         turtle.penup()
         turtle.goto(0, self.canvas_height - 100)
@@ -191,34 +191,37 @@ class BallCollecterGame:
     def easy_mode(self):
         self.is_running = True
         self.start_time = time.time()
-        self.ball_speed = 30
-        self.target_score = 40
+        self.ball_speed = 25
+        self.target_score = 10
         self.time_limit = 60
-        self.spawn_time = 0.5
+        self.spawn_time = 1
         self.ball_speed_multiplier = 1.2
-        self.spawn_rate = [0.4, 0.6, 0.025, 0.001]
+        self.spawn_rate = [0.2, 0.8, 0.025, 0.001]
+        print("Easy Mode Selected")
         self.run()
 
     def medium_mode(self):
         self.is_running = True
         self.start_time = time.time()
-        self.ball_speed = 40
-        self.target_score = 50
+        self.ball_speed = 30
+        self.target_score = 15
         self.time_limit = 50
-        self.spawn_time = 0.4
+        self.spawn_time = 0.9
         self.ball_speed_multiplier = 1.25
-        self.spawn_rate = [0.5, 0.5, 0.025, 0.001]
+        self.spawn_rate = [0.3, 0.7, 0.030, 0.010]
+        print("Medium Mode Selected")
         self.run()
 
     def hard_mode(self):
         self.is_running = True
         self.start_time = time.time()
-        self.ball_speed = 50
-        self.target_score = 60
+        self.ball_speed = 35
+        self.target_score = 20
         self.time_limit = 40
-        self.spawn_time = 0.3
+        self.spawn_time = 0.8
         self.ball_speed_multiplier = 1.5
-        self.spawn_rate = [0.6, 0.4, 0.025, 0.001]
+        self.spawn_rate = [0.4, 0.6, 0.040, 0.020]
+        print("Hard Mode Selected")
         self.run()
 
     def run(self):
@@ -236,7 +239,7 @@ class BallCollecterGame:
                 self.spawn_balls()
                 last_spawn_time = current_time
 
-            self.__redraw()
+            self.redraw()
 
             for i in range(len(self.ball_list)):  # Check ball collision
                 for j in range(i + 1, len(self.ball_list)):
@@ -245,12 +248,12 @@ class BallCollecterGame:
                     if ball1.distance(ball2) <= ball1.size + ball2.size:
                         ball1.bounce_off(ball2)
 
-            for balls in self.ball_list[:]:
+            for balls in self.ball_list:
                 balls.move(0.05)
-                if balls.y - balls.size < -self.canvas_height + 10:  # Ball missed
+                if balls.y - balls.size < -self.canvas_height + 10 and balls.color != "red":
                     self.ball_list.remove(balls)
                 elif self.catch_ball(balls) and balls.color == "green":
-                    self.score += 1  # Ball caught
+                    self.score += 1
                     self.ball_list.remove(balls)
                 elif self.catch_ball(balls) and balls.color == "red":
                     self.score -= 1
@@ -269,7 +272,7 @@ class BallCollecterGame:
         turtle.done()
 
 
-my_game = BallCollecterGame()
+my_game = BallCollectorGame()
 my_game.show_select_difficulty()
 my_game.screen.onkey(my_game.restart_game, "r")
 my_game.screen.listen()
