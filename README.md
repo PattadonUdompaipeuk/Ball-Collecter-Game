@@ -17,7 +17,7 @@ Ball Collecter Game is allow player to select 3 levels (Easy / Medium / Hard) to
 # Project design and implementation
 - link UML Diagram for my project
 https://lucid.app/lucidchart/b0996a77-e0b8-4dba-a6a9-f2dfebe6c703/edit?viewport_loc=-1617%2C-759%2C5134%2C2560%2CHWEp-vi-RSFO&invitationId=inv_2c7bc15d-6a7c-43ef-a76e-086990550718
-- First I modify ball.py to be more easy to understand for me and delete some method that I don't need to use in my project. For the paddle.py I have change nothing from base line code because in I need to use the paddle in my project. For the last one is ball_collect_game.py, I delete method that I don't need to use and add some method to create more game features in my project.
+- First I modify ball.py to be more easy to understand for me and delete some method that I don't need to use in my project. For the paddle.py I have change nothing from base line code because in I need to use the paddle in my project. For the run_ball.py from baseline code I have delete some method that I don't need to use and add more features in my game project. All features that I have add are start screen,select mode, end screen, restart game, score counting, time countdown and I also add some method to make my paddle to move more smooth too.
 - I use breakpoint to debug my code and finally my code is working correctly 100% as I expected it to be.
 
 # Rate my project sophistication level
