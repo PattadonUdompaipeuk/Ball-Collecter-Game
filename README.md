@@ -3,12 +3,12 @@ Collect balls Reach the target score And GET WIN!!
 
 # Project description
 The game that easy to play, all players need to do is only control the paddle to catch balls and hit the target score in time to get win.
-Ball Collecter Game is allow player to select 3 levels (Easy / Medium / Hard) to challenge their skill. The game have restart features that allow player to play many time as they want to get their perfect score. Balls will drop down from abave with random colors (red / green / blue / gold). The red one will -1 score if player catch it, the green one will +1 score if player catch it, the blue one will +3 time limit and the gold one will +3 score if player catch it. The spawn rate of all balls will be different for each levels.
+Ball Collecter Game is allow player to select 3 levels (Easy / Medium / Hard) to challenge their skill. The game have restart features that allow player to play many time as they want to get their perfect score. Balls will drop down from abave with random colors (red / green / blue / gold). The red one will -1 score if player catch it, the green one will +1 score if player catch it, the blue one will +3 time limit and the gold one will +3 score if player catch it. The spawn rate of all balls will be different depend on the difficulty of the level. The time limit ,speed of ball and target score are also change depend on the difficulty of the level too.
 
 # How to install and run the project
 - Fork my repository
 - Clone all my files by git clone
-- Before run you run the project please type " pip install emoji " in the pycharm terminal to install emoji module because I use emoji module in my code.
+- Before you run my project please type " pip install emoji " in the pycharm terminal to install emoji module because I use emoji module in my code.
 - Run the file ball_collect_game.py and enjoy the game :3
 
 # Usage
